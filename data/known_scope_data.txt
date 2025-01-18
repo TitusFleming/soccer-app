@@ -1,0 +1,285 @@
+{
+    "name": "Cole Palmer",
+    "age": 22.0,
+    "position": "FW-MF (AM)\u00a0\u25aa",
+    "foot": "Left",
+    "height": "189cm",
+    "weight": "73kg",
+    "goals_per90": 0.93,
+    "assists_per90": 0.44,
+    "goals_assists_per90": 1.37,
+    "goals_pens_per90": 0.93,
+    "goals_assists_pens_per90": 1.37,
+    "xg_per90": 0.56,
+    "xg_assist_per90": 0.36,
+    "xg_xg_assist_per90": 0.93,
+    "npxg_per90": 0.39,
+    "npxg_xg_assist_per90": 0.75
+}
+--------------------------------------------------------------------------------
+{
+    "name": "Bas Dost",
+    "age": 34.0,
+    "position": "FW\u00a0\u25aa",
+    "foot": "Right",
+    "height": "196cm",
+    "weight": "78kg",
+    "goals_per90": 0.68,
+    "assists_per90": 0.0,
+    "goals_assists_per90": 0.68,
+    "goals_pens_per90": 0.68,
+    "goals_assists_pens_per90": 0.68,
+    "xg_per90": 0.8,
+    "xg_assist_per90": 0.16,
+    "xg_xg_assist_per90": 0.96,
+    "npxg_per90": 0.74,
+    "npxg_xg_assist_per90": 0.9
+}
+--------------------------------------------------------------------------------
+{
+    "name": "Marvin Johnson",
+    "age": 33.0,
+    "position": "DF-FW-MF (DM-WM, left)\u00a0\u25aa",
+    "foot": "Left",
+    "height": "177cm",
+    "weight": "69kg",
+    "goals_per90": 1.08,
+    "assists_per90": 0.0,
+    "goals_assists_per90": 1.08,
+    "goals_pens_per90": 1.08,
+    "goals_assists_pens_per90": 1.08,
+    "xg_per90": 0.07,
+    "xg_assist_per90": 0.19,
+    "xg_xg_assist_per90": 0.26,
+    "npxg_per90": 0.07,
+    "npxg_xg_assist_per90": 0.26
+}
+--------------------------------------------------------------------------------
+{
+    "name": "Juanpe",
+    "age": null,
+    "position": null,
+    "foot": null,
+    "height": null,
+    "weight": null,
+    "goals_per90": null,
+    "assists_per90": null,
+    "goals_assists_per90": null,
+    "goals_pens_per90": null,
+    "goals_assists_pens_per90": null,
+    "xg_per90": null,
+    "xg_assist_per90": null,
+    "xg_xg_assist_per90": null,
+    "npxg_per90": null,
+    "npxg_xg_assist_per90": null
+}
+--------------------------------------------------------------------------------
+{
+    "name": "Cole Palmer",
+    "age": 22.0,
+    "position": "FW-MF (AM)\u00a0\u25aa",
+    "foot": "Left",
+    "height": "189cm",
+    "weight": "73kg",
+    "goals_per90": 0.93,
+    "assists_per90": 0.44,
+    "goals_assists_per90": 1.37,
+    "goals_pens_per90": 0.93,
+    "goals_assists_pens_per90": 1.37,
+    "xg_per90": 0.56,
+    "xg_assist_per90": 0.36,
+    "xg_xg_assist_per90": 0.93,
+    "npxg_per90": 0.39,
+    "npxg_xg_assist_per90": 0.75
+}
+--------------------------------------------------------------------------------
+{
+    "name": "Nkosinathi Zitha",
+    "age": 27.0,
+    "position": null,
+    "foot": null,
+    "height": "185cm",
+    "weight": "81kg",
+    "goals_per90": 0.0,
+    "assists_per90": 0.0,
+    "goals_assists_per90": 0.0,
+    "goals_pens_per90": 0.0,
+    "goals_assists_pens_per90": 0.0,
+    "xg_per90": null,
+    "xg_assist_per90": null,
+    "xg_xg_assist_per90": null,
+    "npxg_per90": null,
+    "npxg_xg_assist_per90": null
+}
+--------------------------------------------------------------------------------
+{
+    "name": "Farshad Ghasemi",
+    "age": null,
+    "position": null,
+    "foot": null,
+    "height": null,
+    "weight": null,
+    "goals_per90": null,
+    "assists_per90": null,
+    "goals_assists_per90": null,
+    "goals_pens_per90": null,
+    "goals_assists_pens_per90": null,
+    "xg_per90": null,
+    "xg_assist_per90": null,
+    "xg_xg_assist_per90": null,
+    "npxg_per90": null,
+    "npxg_xg_assist_per90": null
+}
+--------------------------------------------------------------------------------
+{
+    "name": "Kevin De Bruyne",
+    "age": 33.0,
+    "position": "FW-MF (AM-CM-WM)\u00a0\u25aa",
+    "foot": "Right",
+    "height": "181cm",
+    "weight": "69kg",
+    "goals_per90": 0.27,
+    "assists_per90": 0.42,
+    "goals_assists_per90": 0.69,
+    "goals_pens_per90": 0.27,
+    "goals_assists_pens_per90": 0.69,
+    "xg_per90": 0.23,
+    "xg_assist_per90": 0.49,
+    "xg_xg_assist_per90": 0.72,
+    "npxg_per90": 0.2,
+    "npxg_xg_assist_per90": 0.7
+}
+--------------------------------------------------------------------------------
+{
+    "name": "Martin Odegaard",
+    "age": 25.0,
+    "position": "FW-MF (AM-CM-WM)\u00a0\u25aa",
+    "foot": "Left",
+    "height": "179cm",
+    "weight": "68kg",
+    "goals_per90": 0.31,
+    "assists_per90": 0.37,
+    "goals_assists_per90": 0.68,
+    "goals_pens_per90": 0.31,
+    "goals_assists_pens_per90": 0.68,
+    "xg_per90": 0.19,
+    "xg_assist_per90": 0.4,
+    "xg_xg_assist_per90": 0.59,
+    "npxg_per90": 0.16,
+    "npxg_xg_assist_per90": 0.56
+}
+--------------------------------------------------------------------------------
+{
+    "name": "Phil Foden",
+    "age": 24.0,
+    "position": "FW-MF (AM)\u00a0\u25aa",
+    "foot": "Left",
+    "height": "169cm",
+    "weight": "69kg",
+    "goals_per90": 0.67,
+    "assists_per90": 0.33,
+    "goals_assists_per90": 1.0,
+    "goals_pens_per90": 0.67,
+    "goals_assists_pens_per90": 1.0,
+    "xg_per90": 0.33,
+    "xg_assist_per90": 0.24,
+    "xg_xg_assist_per90": 0.57,
+    "npxg_per90": 0.33,
+    "npxg_xg_assist_per90": 0.57
+}
+--------------------------------------------------------------------------------
+{
+    "name": "Bukayo Saka",
+    "age": 22.0,
+    "position": "DF-FW-MF (AM, right)\u00a0\u25aa",
+    "foot": "Left",
+    "height": "178cm",
+    "weight": "64kg",
+    "goals_per90": 0.33,
+    "assists_per90": 0.46,
+    "goals_assists_per90": 0.79,
+    "goals_pens_per90": 0.33,
+    "goals_assists_pens_per90": 0.79,
+    "xg_per90": 0.3,
+    "xg_assist_per90": 0.24,
+    "xg_xg_assist_per90": 0.54,
+    "npxg_per90": 0.25,
+    "npxg_xg_assist_per90": 0.49
+}
+--------------------------------------------------------------------------------
+{
+    "name": "Matthijs de Ligt",
+    "age": 24.0,
+    "position": "DF (CB)\u00a0\u25aa",
+    "foot": "Right",
+    "height": "189cm",
+    "weight": "88kg",
+    "goals_per90": 0.11,
+    "assists_per90": 0.0,
+    "goals_assists_per90": 0.11,
+    "goals_pens_per90": 0.11,
+    "goals_assists_pens_per90": 0.11,
+    "xg_per90": 0.12,
+    "xg_assist_per90": 0.01,
+    "xg_xg_assist_per90": 0.13,
+    "npxg_per90": 0.12,
+    "npxg_xg_assist_per90": 0.13
+}
+--------------------------------------------------------------------------------
+{
+    "name": "Virgil van Dijk",
+    "age": 33.0,
+    "position": "DF (CB, left)\u00a0\u25aa",
+    "foot": "Right",
+    "height": "193cm",
+    "weight": "87kg",
+    "goals_per90": 0.5,
+    "assists_per90": 0.0,
+    "goals_assists_per90": 0.5,
+    "goals_pens_per90": 0.5,
+    "goals_assists_pens_per90": 0.5,
+    "xg_per90": 0.07,
+    "xg_assist_per90": 0.04,
+    "xg_xg_assist_per90": 0.12,
+    "npxg_per90": 0.07,
+    "npxg_xg_assist_per90": 0.12
+}
+--------------------------------------------------------------------------------
+{
+    "name": "Andr\u00e9 Onana",
+    "age": 28.0,
+    "position": "GK\u00a0\u25aa",
+    "foot": "Right",
+    "height": "185cm",
+    "weight": "82kg",
+    "goals_per90": 0.0,
+    "assists_per90": 0.0,
+    "goals_assists_per90": 0.0,
+    "goals_pens_per90": 0.0,
+    "goals_assists_pens_per90": 0.0,
+    "xg_per90": 0.0,
+    "xg_assist_per90": 0.0,
+    "xg_xg_assist_per90": 0.0,
+    "npxg_per90": 0.0,
+    "npxg_xg_assist_per90": 0.0
+}
+--------------------------------------------------------------------------------
+{
+    "name": "Lionel Messi",
+    "age": 36.0,
+    "position": "FW-MF (AM-WM, right)\u00a0\u25aa",
+    "foot": "Left",
+    "height": "170cm",
+    "weight": "72kg",
+    "goals_per90": 1.02,
+    "assists_per90": 0.63,
+    "goals_assists_per90": 1.64,
+    "goals_pens_per90": 0.97,
+    "goals_assists_pens_per90": 1.6,
+    "xg_per90": 0.7,
+    "xg_assist_per90": 0.26,
+    "xg_xg_assist_per90": 0.96,
+    "npxg_per90": 0.66,
+    "npxg_xg_assist_per90": 0.92
+}
+--------------------------------------------------------------------------------
