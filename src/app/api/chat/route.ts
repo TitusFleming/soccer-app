@@ -1,7 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import { NextResponse } from 'next/server'
 import { analyzeQuestion } from '@/utils/openai'
-import { getPhysicalCharacteristics, getHeight, getWeight, getFootedness } from '@/utils/playerAttributes';
 import OpenAI from 'openai';
 import type { ChatCompletionMessageParam } from 'openai/resources/chat/completions';
 

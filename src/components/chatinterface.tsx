@@ -1,52 +1,38 @@
 'use client'
 
 import { useState } from 'react'
-
-type Message = {
-  role: 'user' | 'assistant'
-  content: string
-}
+import type { Message } from '@/types/chat'
 
 export default function ChatInterface() {
-  const [question, setQuestion] = useState('')
   const [messages, setMessages] = useState<Message[]>([])
+  const [question, setQuestion] = useState('')
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!question.trim()) return
 
-    const userMessage: Message = { role: 'user', content: question }
-    setMessages(prev => [...prev, userMessage])
     setLoading(true)
+    setMessages(prev => [...prev, { role: 'user', content: question }])
     setQuestion('')
 
     try {
-      const previousMessages = messages.map(m => m.content)
-      const res = await fetch('/api/chat', {
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          question,
-          previousMessages 
-        })
+        body: JSON.stringify({ question })
       })
-      
-      const data = await res.json()
-      const assistantMessage: Message = {
-        role: 'assistant',
-        content: data.response || data.error
-      }
-      setMessages(prev => [...prev, assistantMessage])
-    } catch (error) {
-      const errorMessage: Message = {
-        role: 'assistant',
-        content: 'Failed to get response'
-      }
-      setMessages(prev => [...prev, errorMessage])
-    }
 
-    setLoading(false)
+      const data = await response.json()
+      setMessages(prev => [...prev, { role: 'assistant', content: data.response }])
+    } catch {
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: 'Sorry, there was an error processing your request.' 
+      }])
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (

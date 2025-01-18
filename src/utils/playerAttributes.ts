@@ -1,47 +1,28 @@
-type Player = {
-  name: string;
-  age: number | null;
-  position: string | null;
-  foot: string | null;
-  height: string | null;
-  weight: string | null;
-  goals_per90: number | null;
-  assists_per90: number | null;
-  [key: string]: any;
-};
-
-export function getHeight(player: Player): string | null {
-  return player.height;
-}
-
-export function getWeight(player: Player): string | null {
-  return player.weight;
-}
-
-export function getFootedness(player: Player): string | null {
-  return player.foot;
+interface Player {
+  height?: string | null;
+  weight?: string | null;
+  foot?: string | null;
+  // add other player properties as needed
 }
 
 export function getPhysicalCharacteristics(player: Player): string {
-  const height = getHeight(player);
-  const weight = getWeight(player);
-  const foot = getFootedness(player);
+  const characteristics = [];
   
-  return `${player.name} is ${height} tall, weighs ${weight}, and is ${foot}-footed.`;
+  if (player.height) characteristics.push(`height of ${player.height}`);
+  if (player.weight) characteristics.push(`weight of ${player.weight}`);
+  if (player.foot) characteristics.push(`preferred foot is ${player.foot}`);
+  
+  return characteristics.join(', ');
 }
 
-export function getAge(player: Player): number | null {
-  return player.age;
+export function getHeight(player: Player): string | null {
+  return player.height || null;
 }
 
-export function getPosition(player: Player): string | null {
-  return player.position;
+export function getWeight(player: Player): string | null {
+  return player.weight || null;
 }
 
-export function getGoalsPerNinety(player: Player): number | null {
-  return player.goals_per90;
-}
-
-export function getAssistsPerNinety(player: Player): number | null {
-  return player.assists_per90;
+export function getFootedness(player: Player): string | null {
+  return player.foot || null;
 }
