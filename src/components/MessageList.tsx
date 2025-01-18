@@ -17,8 +17,8 @@ export default function MessageList({ messages, loading }: MessageListProps) {
 
   if (!messages.length) {
     return (
-      <div className="flex-1 flex items-center justify-center text-muted-foreground">
-        Ask me anything about soccer players and their statistics!
+      <div className="flex-1 flex items-center justify-center text-muted-foreground text-center">
+        Welcome! I provide detailed statistics for players in Europe's top 5 leagues (data last updated December 20234).
       </div>
     )
   }
