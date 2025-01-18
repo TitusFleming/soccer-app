@@ -69,7 +69,7 @@ export async function POST(request: Request) {
 
     if (!player) {
       return NextResponse.json({ 
-        response: `I don't have any data for ${playerName} in my database. Please ask about another player.`
+        response: `I don't have data for ${playerName}. I only have statistics for players in Europe's top 5 leagues (Premier League, La Liga, Bundesliga, Serie A, and Ligue 1) as of December 2024. Please ask about another player.`
       })
     }
 
