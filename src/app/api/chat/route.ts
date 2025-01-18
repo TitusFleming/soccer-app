@@ -29,47 +29,29 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-export async function POST(request: Request) {
-  const { question } = await request.json()
-   
+export async function POST(req: Request) {
   try {
+    const { question } = await req.json()
     const playerName = await analyzeQuestion(question)
-    
-    if (!playerName && (
-      question.toLowerCase().includes('he') || 
-      question.toLowerCase().includes('his') ||
-      question.toLowerCase().includes('him')
-    )) {
-      const lastPlayer = await prisma.player.findFirst({
-        orderBy: { updatedAt: 'desc' }
-      }) as Player | null;
-      
-      if (lastPlayer) {
-        const response = await generateNaturalResponse(question, lastPlayer);
-        return NextResponse.json({ response });
-      }
-    }
 
     if (!playerName) {
-      return NextResponse.json({ 
-        response: "I can only help you with questions about soccer players. What player would you like to know about?"
+      return NextResponse.json({
+        response: "I couldn't identify a player name in your question. Please ask about a specific player's statistics."
       })
     }
 
     const player = await prisma.player.findFirst({
       where: {
-        OR: [
-          { name: { equals: playerName, mode: 'insensitive' } },
-          { name: { contains: playerName, mode: 'insensitive' } },
-          { name: { contains: playerName.split(' ')[0], mode: 'insensitive' } },
-          { name: { contains: playerName.split(' ').slice(-1)[0], mode: 'insensitive' } },
-        ]
+        name: {
+          contains: playerName,
+          mode: 'insensitive'
+        }
       }
-    }) as Player | null;
+    })
 
     if (!player) {
-      return NextResponse.json({ 
-        response: `I don't have data for ${playerName}. I only have statistics for players in Europe's top 5 leagues (Premier League, La Liga, Bundesliga, Serie A, and Ligue 1) as of December 2024. Please ask about another player.`
+      return NextResponse.json({
+        response: `I apologize, but I don't have data for ${playerName}. My database only contains current player statistics from Europe's top 5 leagues (Premier League, La Liga, Bundesliga, Serie A, and Ligue 1) as of December 2023. I cannot provide information about retired players, players in other leagues, or historical statistics. Please ask about a current player from these leagues.`
       })
     }
 
@@ -82,10 +64,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ response })
 
   } catch (error) {
-    console.error('Error:', error);
-    return NextResponse.json({ 
-      response: error instanceof Error ? error.message : "Failed to process request"
-    });
+    return NextResponse.json({
+      response: "Sorry, there was an error processing your request. Please try again."
+    })
   }
 }
 
