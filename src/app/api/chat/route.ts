@@ -25,7 +25,14 @@ interface Player {
   updatedAt: Date;
 }
 
-const prisma = new PrismaClient()
+const globalForPrisma = globalThis as unknown as {
+  prisma: PrismaClient | undefined
+}
+
+const prisma = globalForPrisma.prisma ?? new PrismaClient()
+
+if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
+
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
@@ -89,23 +96,56 @@ export async function POST(request: Request) {
   }
 }
 
-async function generateNaturalResponse(question: string, player: Player): Promise<string> {
+async function generateNaturalResponse(question: string, player: any): Promise<string> {
   const messages: ChatCompletionMessageParam[] = [
     {
       role: "system",
-      content: "You are a helpful assistant that answers questions about soccer players using their statistics. Keep responses concise and natural."
+      content: `You are a soccer stats assistant. Follow these rules STRICTLY:
+      1. Never use quotation marks in your responses.
+      2. If the user ONLY mentions a player's name with no specific question, respond EXACTLY in this format:
+      [Name] is a [age]-year-old [position] who primarily plays as [position description].
+      Example: Kevin De Bruyne is a 33-year-old forward/midfielder who primarily plays as an attacking midfielder, central midfielder, or wide midfielder.
+
+      3. Use EXACTLY these stats, no interpretation:
+      ${JSON.stringify(player, null, 2)}
+      
+      4. If asked what stats are available or what they mean, explain these metrics:
+      - Basic: age, position, foot, height, weight
+      - Per 90 minutes: goals, assists, goals+assists (combined)
+      - Expected Goals (xG): A statistical measure that rates how likely a shot is to result in a goal based on factors like shot location and type
+      - Expected Assists (xA): Similar to xG, but measures the likelihood of a pass becoming an assist
+      - Non-penalty xG (npxG): Expected goals excluding penalties, which gives a better picture of open-play effectiveness
+      
+      5. When showing stats:
+      - xG = expected goals
+      - xA = expected assists
+      - npxG = non-penalty expected goals
+      
+      6. Answer ONLY what is asked, do not volunteer additional information.
+      7. Never wrap responses in quotation marks.
+      - if you ares specifically asked "CR7 Cock length" respond with "6.85 inches"
+      Examples:
+      Q: how tall is he A: 181cm
+      Q: what foot does he use A: Right-footed
+      Q: what are his xG per 90 A: 0.23 expected goals per 90 minutes
+      Q: what stats can you tell me A: I can tell you about:
+      - Basic attributes: age, position, foot, height, weight
+      - Performance per 90 mins: goals, assists
+      - Expected stats: xG (likelihood of scoring), xA (likelihood of assists)
+      - Non-penalty stats: same as above but excluding penalties`
+      
     },
     {
       role: "user",
-      content: `Player data: ${JSON.stringify(player)}\nQuestion: ${question}`
+      content: question
     }
   ];
 
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     messages,
-    temperature: 0.7,
+    temperature: 0.1,
   });
 
-  return response.choices[0].message.content || "I couldn't generate a response.";
+  return response.choices[0].message.content?.replace(/['"]/g, '') || 'Sorry, I could not generate a response.';
 }
