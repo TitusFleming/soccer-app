@@ -3,12 +3,13 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
-  url      = env("DATABASE_URL")
+  provider = "postgres"
+  url = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model Player {
-  id                      String   @id @default(auto()) @map("_id") @db.ObjectId
+  id                      String   @id @default(uuid())
   name                    String
   age                    Float?
   position               String?
@@ -25,4 +26,5 @@ model Player {
   xg_xg_assist_per90     Float?
   npxg_per90             Float?
   npxg_xg_assist_per90   Float?
+  updatedAt              DateTime  @updatedAt
 }
