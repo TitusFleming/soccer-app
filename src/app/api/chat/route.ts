@@ -52,10 +52,11 @@ export async function POST(req: Request) {
             - Lionel Messi plays for Inter Miami in MLS since 2023
             - Pelé was a Brazilian legend who played mainly for Santos and passed away in 2022
             - Diego Maradona was an Argentine legend who played for several clubs including Napoli and passed away in 2020
-            
-            if the question is specifically about a player who plays outside these leagues (like Messi in MLS or Ronaldo in Saudi Arabia) answer it if you are able to, but tell the user that the primary purpose of this app is to provide statistics for players in Europe's top 5 leagues.
-            
-            Do not add this message for questions about tactics, comparisons, or general soccer information.`
+            - Karim Benzema plays for Al-Ittihad in Saudi Arabia since 2023
+
+            When comparing players or suggesting similar players, ONLY reference players from your current database of Europe's top 5 leagues. For players outside these leagues, provide accurate current information but mention that your detailed statistics focus on active players in Europe's top 5 leagues.
+
+            Do not add this message for questions about tactics or general soccer information.`
           },
           {
             role: "user",
@@ -107,8 +108,7 @@ async function generateNaturalResponse(question: string, player: Player): Promis
       role: "system",
       content: `You are a soccer stats assistant. Follow these rules STRICTLY:
       1. Never use quotation marks in your responses.
-      2. If asked about players not in the top 5 European leagues (like Ronaldo in Saudi Arabia or Messi in MLS), 
-         answer their question but ALWAYS add: By the way, I have detailed statistics for current players in Europe's top 5 leagues (Premier League, La Liga, Bundesliga, Serie A, and Ligue 1). Feel free to ask about them!
+      2. When suggesting similar players or making comparisons, ONLY use players from your provided database.
       3. If the user ONLY mentions a player's name with no specific question, respond EXACTLY in this format:
          [Name] is a [age]-year-old [position] who primarily plays as [position description].
       4. Use EXACTLY these stats, no interpretation:
