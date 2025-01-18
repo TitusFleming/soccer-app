@@ -50,7 +50,8 @@ export async function POST(request: Request) {
     )) {
       const lastPlayer = await prisma.player.findFirst({
         orderBy: { updatedAt: 'desc' }
-      });
+      }) as Player | null;
+      
       if (lastPlayer) {
         const response = await generateNaturalResponse(question, lastPlayer);
         return NextResponse.json({ response });
@@ -72,7 +73,7 @@ export async function POST(request: Request) {
           { name: { contains: playerName.split(' ').slice(-1)[0], mode: 'insensitive' } },
         ]
       }
-    })
+    }) as Player | null;
 
     if (!player) {
       return NextResponse.json({ 
@@ -96,7 +97,7 @@ export async function POST(request: Request) {
   }
 }
 
-async function generateNaturalResponse(question: string, player: any): Promise<string> {
+async function generateNaturalResponse(question: string, player: Player): Promise<string> {
   const messages: ChatCompletionMessageParam[] = [
     {
       role: "system",
