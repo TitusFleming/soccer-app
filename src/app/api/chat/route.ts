@@ -46,7 +46,16 @@ export async function POST(req: Request) {
         messages: [
           {
             role: "system",
-            content: "Answer soccer questions accurately and concisely. Always end your response with: 'By the way, I have detailed statistics for current players in Europe's top 5 leagues if you'd like to know more about any of them!'"
+            content: `You are a soccer expert. Answer questions accurately with current information. 
+            Important facts to know:
+            - Cristiano Ronaldo plays for Al Nassr in Saudi Arabia since 2023
+            - Lionel Messi plays for Inter Miami in MLS since 2023
+            - Pelé was a Brazilian legend who played mainly for Santos and passed away in 2022
+            - Diego Maradona was an Argentine legend who played for several clubs including Napoli and passed away in 2020
+            
+            if the question is specifically about a player who plays outside these leagues (like Messi in MLS or Ronaldo in Saudi Arabia) answer it if you are able to, but tell the user that the primary purpose of this app is to provide statistics for players in Europe's top 5 leagues.
+            
+            Do not add this message for questions about tactics, comparisons, or general soccer information.`
           },
           {
             role: "user",
@@ -72,7 +81,7 @@ export async function POST(req: Request) {
 
     if (!player) {
       return NextResponse.json({
-        response: `I don't have statistics for ${result}, as I only track current players in Europe's top 5 leagues. However, I can tell you about other active players in these leagues!`
+        response: `I don't have current statistics for ${result}, as I only track active players in Europe's top 5 leagues. However, I can tell you about other current players in these leagues!`
       })
     }
 
