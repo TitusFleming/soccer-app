@@ -14,17 +14,10 @@ export async function analyzeQuestion(question: string): Promise<string | null> 
     const messages: ChatCompletionMessageParam[] = [
       {
         role: "system",
-        content: `You are a helpful assistant that extracts soccer player names from questions. 
-        If you find a player name, nickname, or partial name, return ONLY their name.
-        Be flexible with naming formats and capitalization.
-        Common examples:
-        - KDB, De Bruyne, Kevin -> Kevin De Bruyne
-        - VVD, Van Dijk -> Virgil van Dijk
-        - Messi, Leo Messi -> Lionel Messi
-        - Palmer, Cole -> Cole Palmer
-        
-        If the input is not about a soccer player or no player is mentioned, return null.
-        Always prefer matching a player name if possible, even with partial matches.`
+        content: `You are a helpful assistant that analyzes soccer questions.
+        If a question is about a specific player's stats, return ONLY their name.
+        If the question is about general soccer information (like where a player plays), return "GENERAL_SOCCER_QUESTION".
+        If the input is not about soccer at all, return null.`
       },
       {
         role: "user",
@@ -39,7 +32,7 @@ export async function analyzeQuestion(question: string): Promise<string | null> 
     });
 
     const content = response.choices[0].message.content;
-    if (!content || content === 'UNKNOWN' || content === 'null') {
+    if (!content || content === 'null') {
       return null;
     }
     

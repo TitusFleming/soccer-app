@@ -32,18 +32,39 @@ const openai = new OpenAI({
 export async function POST(req: Request) {
   try {
     const { question } = await req.json()
-    const playerName = await analyzeQuestion(question)
+    const result = await analyzeQuestion(question)
 
-    if (!playerName) {
+    if (!result) {
       return NextResponse.json({
-        response: "I couldn't identify a player name in your question. Please ask about a specific player's statistics."
+        response: "I couldn't understand your question. Please ask about soccer players or statistics."
+      })
+    }
+
+    if (result === "GENERAL_SOCCER_QUESTION") {
+      const response = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: [
+          {
+            role: "system",
+            content: "Answer soccer questions accurately and concisely. Always end your response with: 'By the way, I have detailed statistics for current players in Europe's top 5 leagues if you'd like to know more about any of them!'"
+          },
+          {
+            role: "user",
+            content: question
+          }
+        ],
+        temperature: 0.7,
+      });
+
+      return NextResponse.json({ 
+        response: response.choices[0].message.content 
       })
     }
 
     const player = await prisma.player.findFirst({
       where: {
         name: {
-          contains: playerName,
+          contains: result,
           mode: 'insensitive'
         }
       }
@@ -51,13 +72,7 @@ export async function POST(req: Request) {
 
     if (!player) {
       return NextResponse.json({
-        response: `I don't have data for ${playerName}. I only have current statistics for active players in Europe's top 5 leagues (Premier League, La Liga, Bundesliga, Serie A, and Ligue 1) as of December 2023. This means I cannot provide information about:
-• Retired players (like Maradona, Pelé)
-• Players in other leagues (MLS, Saudi Pro League, etc.)
-• Historical statistics
-• Players who transferred out of these leagues
-
-Please ask about a current player from the top 5 European leagues.`
+        response: `I don't have statistics for ${result}, as I only track current players in Europe's top 5 leagues. However, I can tell you about other active players in these leagues!`
       })
     }
 
