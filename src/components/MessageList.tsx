@@ -18,7 +18,7 @@ export default function MessageList({ messages, loading }: MessageListProps) {
   if (!messages.length) {
     return (
       <div className="flex-1 flex items-center justify-center text-muted-foreground text-center">
-        Welcome! I provide detailed statistics for players in Europe&apos;s top 5 leagues, with data last updated December 2023.
+        Welcome! I provide detailed statistics for players in Europe&apos;s top 5 leagues, with data last updated December 2024.
       </div>
     )
   }
