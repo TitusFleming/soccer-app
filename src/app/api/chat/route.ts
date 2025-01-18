@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+import { prisma } from '@/lib/prisma'
 import { NextResponse } from 'next/server'
 import { analyzeQuestion } from '@/utils/openai'
 import OpenAI from 'openai';
@@ -24,14 +24,6 @@ interface Player {
   npxg_xg_assist_per90?: number | null;
   updatedAt: Date;
 }
-
-const globalForPrisma = globalThis as unknown as {
-  prisma: PrismaClient | undefined
-}
-
-const prisma = globalForPrisma.prisma ?? new PrismaClient()
-
-if (process.env.NODE_ENV !== 'production') globalForPrisma.prisma = prisma
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
